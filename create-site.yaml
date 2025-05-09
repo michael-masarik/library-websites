@@ -11,4 +11,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Create site
+        env:
+          AUTH_TOKEN: ${{ secrets.LIBRARY_SITE_AUTH_TOKEN }}
+          BODY: ${{ github.event.client_payload.body }}
         run: python create-site.py

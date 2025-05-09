@@ -1,0 +1,14 @@
+name: Create Library Site
+on: repository_dispatch
+jobs:
+  create-site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Create site
+        run: python create-site.py

@@ -18,8 +18,7 @@ except FileNotFoundError:
 body = json.loads(jsonBody)
 #Notion API Auth
 #Comment this out if you are testing locally
-#notion = Client(os.getenv("AUTH_TOKEN"))
-notion = Client(auth="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") 
+notion = Client(os.getenv("AUTH_TOKEN"))
 #Get the API token from api-token.txt file if testing locally
 #JSON Processer
 def get_data_from_body(data, *keys):

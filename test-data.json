@@ -2,6 +2,8 @@
   "body": {
 	"library_name": "Plumfield Living Library",
 	"location": "Denmark WI, USA",
-	"catalog": "https://libib.com/u/plumfieldlibrary"
+	"catalog": "https://libib.com/u/plumfieldlibrary",
+	"cover_image":"https://meriadoclibrary.com/images/banner.jpg",
+	"icon_image":"https://meriadoclibrary.com/images/library-logo.jpg"
   }
 }

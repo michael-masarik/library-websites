@@ -18,10 +18,9 @@ except FileNotFoundError:
     raise Exception("No BODY env var and test-data.json not found.")
 body = json.loads(jsonBody)
 #Notion API Auth
-NOTION_KEY =  "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" #os.getenv("AUTH_TOKEN")
+NOTION_KEY =  os.getenv("AUTH_TOKEN")
 #Comment this out if you are testing locally
-#notion = Client(os.getenv("AUTH_TOKEN"))
-notion = Client(auth="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") 
+notion = Client(os.getenv("AUTH_TOKEN"))
 #Get the API token from api-token.txt file if testing locally
 #JSON Processer
 def get_data_from_body(data, *keys):
@@ -46,7 +45,7 @@ payload = {
 headers = {
         "accept": "application/json",
         "content-type": "application/json",
-        "Authorization": "Bearer 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",
+        "Authorization": f"Bearer {NOTION_KEY}",
         "Notion-Version": "2022-06-28"
     }
 
@@ -99,7 +98,7 @@ payload = {
 headers = {
         "accept": "application/json",
         "content-type": "application/json",
-        "Authorization": "Bearer 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",
+        "Authorization": f"Bearer {NOTION_KEY}",
         "Notion-Version": "2022-06-28"
     }
 

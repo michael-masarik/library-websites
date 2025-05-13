@@ -14,7 +14,7 @@ n_upload_url = "https://api.notion.com/v1/file_uploads"
 
 payload = {
         "filename": "events.pdf",  
-        "content_type": "file/pdf"
+        "content_type": "application/pdf"
     }    
 headers = {
         "accept": "application/json",
@@ -45,7 +45,7 @@ if response.status_code == 200:
 
     with open(temp_file_path, "rb") as f:
         files = {
-            "file": ("image.jpg", f, "file/pdf"),
+            "file": ("file.pdf", f, "application/pdf"),
         }
 
         url = f"https://api.notion.com/v1/file_uploads/{file_id}/send"

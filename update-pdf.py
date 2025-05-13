@@ -2,12 +2,24 @@ import os
 from notion_client import Client 
 import requests 
 import pprint 
+import re
 
 #Variables
 NOTION_KEY =  os.getenv("AUTH_TOKEN")
 FILE_PATH = os.getenv("FILE_URL")
 notion = Client(auth=NOTION_KEY)
 page_id = os.getenv("PAGE_ID")
+
+def format_notion_id(raw_id):
+    if "-" in raw_id:
+        return raw_id  # already correct
+    # Convert 32-char ID to dashed UUID
+    print("Raw page_id:", raw_id)
+    return f"{raw_id[0:8]}-{raw_id[8:12]}-{raw_id[12:16]}-{raw_id[16:20]}-{raw_id[20:32]}"
+    
+
+page_id = format_notion_id(page_id)
+print("Formatted page_id:", page_id)
 
 #Starting the upload for the pdf
 n_upload_url = "https://api.notion.com/v1/file_uploads"

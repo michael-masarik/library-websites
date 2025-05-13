@@ -1,0 +1,18 @@
+name: Update PDF
+on: repository_dispatch
+jobs:
+  create-site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Create site
+        env:
+          AUTH_TOKEN: ${{ secrets.LIBRARY_SITE_AUTH_TOKEN }}
+          FILE_URL: ${{ github.event.client_payload.file }}
+          PAGE_ID: ${{ github.event.client_payload.page_id }}
+        run: python update-pdf.py

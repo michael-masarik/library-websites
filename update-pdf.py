@@ -11,11 +11,13 @@ notion = Client(auth=NOTION_KEY)
 page_id = os.getenv("PAGE_ID")
 
 def format_notion_id(raw_id):
-    if "-" in raw_id:
-        return raw_id  # already correct
-    # Convert 32-char ID to dashed UUID
-    print("Raw page_id:", raw_id)
-    return f"{raw_id[0:8]}-{raw_id[8:12]}-{raw_id[12:16]}-{raw_id[16:20]}-{raw_id[20:32]}"
+    # Remove quotes if accidentally included
+    raw_id = raw_id.strip().replace('"', '')
+
+    # Add dashes if needed
+    if "-" not in raw_id and len(raw_id) == 32:
+        return f"{raw_id[0:8]}-{raw_id[8:12]}-{raw_id[12:16]}-{raw_id[16:20]}-{raw_id[20:]}"
+    return raw_id
     
 
 page_id = format_notion_id(page_id)

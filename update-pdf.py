@@ -98,7 +98,7 @@ notion.blocks.children.append(
             "type": "pdf",
             "pdf": {
                 "type": "file-upload",
-                "file-upload": {
+                "file_upload": {
                     "id": file_id
                 }
             }

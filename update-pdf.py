@@ -7,7 +7,7 @@ import pprint
 NOTION_KEY =  os.getenv("AUTH_TOKEN")
 FILE_PATH = os.getenv("FILE_URL")
 notion = Client(auth=NOTION_KEY)
-page_id = "your_page_id"
+page_id = os.getenv("PAGE_ID")
 
 #Starting the upload for the pdf
 n_upload_url = "https://api.notion.com/v1/file_uploads"
